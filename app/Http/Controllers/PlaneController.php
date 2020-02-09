@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Plane;
+use App\Airline;
 use Illuminate\Http\Request;
 
 class PlaneController extends Controller
@@ -14,7 +15,9 @@ class PlaneController extends Controller
      */
     public function index()
     {
-        //
+        $planes = Plane::with('airline')->paginate(10);
+        return view ('planes.index', ['planes' => $planes]);
+
     }
 
     /**
@@ -24,7 +27,8 @@ class PlaneController extends Controller
      */
     public function create()
     {
-        //
+        $airlines = Airline::all();
+        return view ('planes.create', ['airlines' => $airlines]);
     }
 
     /**
@@ -35,7 +39,19 @@ class PlaneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|string|max:255',
+            'capacity' => 'required|integer',
+            'airline_id' => 'required|integer'
+        ]);
+
+        Plane::create(request([
+            'name',
+            'capacity',
+            'airline_id'
+        ]));
+
+        return redirect('/planes');
     }
 
     /**
@@ -57,7 +73,8 @@ class PlaneController extends Controller
      */
     public function edit(Plane $plane)
     {
-        //
+        $airlines = Airline::all();
+        return view ('planes.edit', ['airlines' => $airlines, 'plane' => $plane]);
     }
 
     /**
@@ -69,7 +86,19 @@ class PlaneController extends Controller
      */
     public function update(Request $request, Plane $plane)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|string|max:255',
+            'capacity' => 'required|integer',
+            'airline_id' => 'required|integer'
+        ]);
+
+        $plane->update(request([
+            'name',
+            'capacity',
+            'airline_id'
+        ]));
+
+        return redirect('/planes');
     }
 
     /**
@@ -80,6 +109,7 @@ class PlaneController extends Controller
      */
     public function destroy(Plane $plane)
     {
-        //
+        $plane->delete();
+        return redirect('/planes');
     }
 }

@@ -21,6 +21,8 @@ class CreateFlightsTable extends Migration
             $table->integer('price');
             $table->timestamp('datetime');
             $table->integer('duration');
+            $table->boolean('promoted')->default(false);
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }

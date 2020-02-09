@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Cijena:</label>
-                    <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+                    <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="€" required>
                 </div>
                 <div class="form-group">
                     <label for="datetime">Datum i vrijeme:</label>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="duration">Trajanje:</label>
-                    <input type="number" class="form-control" id="duration" name="duration">
+                    <input type="number" class="form-control" id="duration" name="duration" placeholder="Trajanje u minutama">
                 </div>
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Confirm</button>

@@ -47,10 +47,13 @@
 
                                             <li><a href="about.html">About us</a></li>
                                             <li><a href="#">Services</a></li>
-                                            @guest
+                                        @guest
                                                 <li><a href="{{ route('login') }}">Prijava</a></li>
                                                 <li><a href="{{ route('register') }}">Registracija</a></li>
                                             @else
+                                                @admin
+                                                <li><a href="/admin">Admin panel</a></li>
+                                                @endAdmin
                                                 <li class="nav-item dropdown ml-5">
                                                     <a class="text-white">
                                                         {{ Auth::user()->full_name }}
@@ -312,7 +315,7 @@
                                         <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
                                     </div>
                                     <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">Bali</a></div>
+                                        <div class="destination_title"><a href="destinations.blade.php">BalIIIi</a></div>
                                         <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
                                         <div class="destination_price">From $679</div>
                                     </div>

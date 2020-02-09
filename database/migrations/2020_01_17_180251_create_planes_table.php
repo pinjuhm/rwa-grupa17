@@ -17,7 +17,7 @@ class CreatePlanesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('capacity');
-            $table->unsignedBigInteger('aviocompany_id');
+            $table->unsignedBigInteger('airline_id');
             $table->timestamps();
         });
     }

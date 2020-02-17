@@ -45,8 +45,17 @@
                     <label for="duration">Trajanje:</label>
                     <input type="number" class="form-control" id="duration" name="duration" placeholder="Trajanje u minutama">
                 </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" name="promoted" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Promovirati
+                        </label>
+                    </div>{{--                    <label class="radio-inline mr-3"><input type="radio" name="promoted" value="false" checked>Ne</label>--}}
+{{--                    <label class="radio-inline"><input type="radio" name="promoted" value="true">Da</label>--}}
+                </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">Confirm</button>
+                    <button type="submit" class="btn btn-primary">Potvrdi</button>
                 </div>
             </form>
             <div class="col-7">

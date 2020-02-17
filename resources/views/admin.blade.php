@@ -23,7 +23,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/flights" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/flights" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/reservations" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/reservations" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/airlines" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/airlines" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/planes" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/planes" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/users" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/users" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                 </div>
-                                <a type="button" href="/cities" class ="btn btn-sm btn-outline-secondary">View</a>
+                                <a type="button" href="/cities" class ="btn btn-sm btn-outline-secondary">Pogledaj</a>
                             </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@
     @yield('styles')
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav id="nav" class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a id="logo" class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}

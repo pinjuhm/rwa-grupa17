@@ -17,12 +17,8 @@ class FlightController extends Controller
      */
     public function index()
     {
-
-        Flight::join('cities as city_from', 'flights.city_id_from', '=', 'city_from.id')
-            ->join('cities as city_to', 'flights.city_id_to', '=', 'city_to.id')
-            ->with('plane')
-            ->get(['city_from.name as city_from_name', 'city_to.name as city_to_name',  'flights.*']);
-        return view('flights.index');
+        $flights = Flight::withJoinedInfo()->paginate(10);
+        return view('flights.index', ['flights' => $flights]);
     }
 
     /**
@@ -51,8 +47,7 @@ class FlightController extends Controller
             'plane_id' => 'required|integer',
             'price' => 'required|integer',
             'datetime' => 'required',
-            'duration' => 'required|integer',
-            'promoted' => 'boolean',
+            'duration' => 'required|integer'
         ]);
 
         Flight::create(request([
@@ -87,7 +82,9 @@ class FlightController extends Controller
      */
     public function edit(Flight $flight)
     {
-        //
+        $cities = City::all();
+        $planes = Plane::all();
+        return view ('flights.edit', ['flight' => $flight, 'cities' => $cities, 'planes' => $planes]);
     }
 
     /**
@@ -99,7 +96,39 @@ class FlightController extends Controller
      */
     public function update(Request $request, Flight $flight)
     {
-        //
+        $this->validate(request(), [
+            'city_id_from' => 'required|integer',
+            'city_id_to' => 'required|integer',
+            'plane_id' => 'required|integer',
+            'price' => 'required|integer',
+            'datetime' => 'required',
+            'duration' => 'required|integer'
+        ]);
+
+        if ($request->has('promoted')) {
+            $request->merge(['promoted' => 1]);
+        } else {
+            $request->merge(['promoted' => 0]);
+        }
+
+        if ($request->has('completed')) {
+            $request->merge(['completed' => 1]);
+        } else {
+            $request->merge(['completed' => 0]);
+        }
+
+        $flight->update(request([
+            'city_id_from',
+            'city_id_to',
+            'plane_id' ,
+            'price',
+            'datetime',
+            'duration',
+            'promoted',
+            'completed'
+        ]));
+
+        return redirect('/flights/' . $flight->id . '/edit');
     }
 
     /**

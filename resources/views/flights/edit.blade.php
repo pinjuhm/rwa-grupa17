@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-7 shadow p-3 bg-info rounded">
-                <h2 class="text-center my-4">Novi let</h2>
+                <h2 class="text-center my-4">Uredi let</h2>
             </div>
             <form method="POST" action="/flights/{{$flight->id}}" class="col-7 shadow p-3 mb-5 bg-white rounded">
                 @csrf

@@ -19,6 +19,9 @@ class CreateReservationsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('code');
             $table->timestamps();
+
+            $table->foreign('flight_id')->references('id')->on('flights');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -24,6 +24,11 @@ class CreateFlightsTable extends Migration
             $table->boolean('promoted')->default(false);
             $table->boolean('completed')->default(false);
             $table->timestamps();
+
+            $table->foreign('city_id_from')->references('id')->on('cities');
+            $table->foreign('city_id_to')->references('id')->on('cities');
+            $table->foreign('plane_id')->references('id')->on('planes');
+
         });
     }
 

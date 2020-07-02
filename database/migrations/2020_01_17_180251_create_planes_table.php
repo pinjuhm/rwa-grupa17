@@ -19,6 +19,8 @@ class CreatePlanesTable extends Migration
             $table->integer('capacity');
             $table->unsignedBigInteger('airline_id');
             $table->timestamps();
+
+            $table->foreign('airline_id')->references('id')->on('airlines');
         });
     }
 

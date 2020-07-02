@@ -47,7 +47,7 @@
 
                                             <li><a href="about.html">About us</a></li>
                                             <li><a href="#">Services</a></li>
-                                        @guest
+                                            @guest
                                                 <li><a href="{{ route('login') }}">Prijava</a></li>
                                                 <li><a href="{{ route('register') }}">Registracija</a></li>
                                             @else
@@ -71,7 +71,8 @@
                                                     {{--														{{ __('Logout') }}--}}
                                                     {{--													</a>--}}
 
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                          style="display: none;">
                                                         @csrf
                                                     </form>
                                                 </li>
@@ -112,7 +113,12 @@
             <div class="menu">
                 <div class="menu_header d-flex flex-row align-items-center justify-content-start">
                     <div class="menu_logo"><a href="indssex.blade.php">Travello</a></div>
-                    <div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
+                    <div class="menu_close_container ml-auto">
+                        <div class="menu_close">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="menu_content">
                     <ul>
@@ -146,13 +152,14 @@
 
                         <!-- Slide -->
                         <div class="owl-item">
-                            <div class="background_image" style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
+                            <div class="background_image"
+                                 style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
                             <div class="home_slider_content_container">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
                                             <div class="home_slider_content">
-                                                <div class="home_title"><h2>Let us take you away</h2></div>
+                                                <div class="home_title"><h2>Dopustite da vas odvedemo</h2></div>
                                             </div>
                                         </div>
                                     </div>
@@ -162,13 +169,14 @@
 
                         <!-- Slide -->
                         <div class="owl-item">
-                            <div class="background_image" style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
+                            <div class="background_image"
+                                 style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
                             <div class="home_slider_content_container">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
                                             <div class="home_slider_content">
-                                                <div class="home_title"><h2>Let us take you away</h2></div>
+                                                <div class="home_title"><h2>Dopustite da vas odvedemo</h2></div>
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +186,8 @@
 
                         <!-- Slide -->
                         <div class="owl-item">
-                            <div class="background_image" style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
+                            <div class="background_image"
+                                 style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
                             <div class="home_slider_content_container">
                                 <div class="container">
                                     <div class="row">
@@ -196,9 +205,9 @@
 
                     <div class="home_page_nav">
                         <ul class="d-flex flex-column align-items-end justify-content-end">
-                            <li><a href="#" data-scroll-to="#destinations">Offers<span>01</span></a></li>
-                            <li><a href="#" data-scroll-to="#testimonials">Testimonials<span>02</span></a></li>
-                            <li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
+                            <li><a href="#" data-scroll-to="#destinations">Ponude<span>01</span></a></li>
+                            <li><a href="#" data-scroll-to="#testimonials">Iskustva<span>02</span></a></li>
+                            <li><a href="#" data-scroll-to="#news">Najnovije<span>03</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -211,30 +220,32 @@
                     <div class="row">
                         <div class="col">
                             <div class="home_search_container">
-                                <div class="home_search_title">Search for your trip</div>
+                                <div class="home_search_title">Pronađite vaš let</div>
                                 <div class="home_search_content">
                                     <form action="#" class="home_search_form" id="home_search_form">
-                                        <div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                            <select class="search_input search_input_1" id="city_id" name="city_id_from" required>
-                                                {{--											@foreach($authors as $author)--}}
+                                        <div
+                                            class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+                                            <select class="search_input search_input_1" id="city_id" name="city_id_from"
+                                                    required>
                                                 <option value="" selected disabled>Od</option>
-                                                <option value=1>BABABAWBAWB</option>
-                                                <option value=1>DAWDAWDAWDw</option>
-
-                                                {{--											@endforeach--}}
+                                                @foreach($cities as $city)
+                                                    <option value={{$city->id}}>{{$city->name}}</option>
+                                                @endforeach
                                             </select>
-                                            <select class="search_input search_input_1" id="city_id" name="city_id_to" required>
-                                                {{--											@foreach($authors as $author)--}}
-                                                <option value="">Do</option>
-                                                <option value=1>BABABAWBAWB</option>
-                                                <option value=1>DAWDAWDAWDw</option>
-
-                                                {{--											@endforeach--}}
+                                            <select class="search_input search_input_1" id="city_id" name="city_id_to"
+                                                    required>
+                                                <option value="" selected disabled>Do</option>
+                                                @foreach($cities as $city)
+                                                    <option value={{$city->id}}>{{$city->name}}</option>
+                                                @endforeach
                                             </select>
-                                            <input type="date" name="date_from" class="search_input search_input_2" placeholder="Departure" required="required">
-                                            <input type="date" name ="date_to" class="search_input search_input_3" placeholder="Arrival" required="required">
-                                            <input type="number" class="search_input search_input_4" placeholder="Budget (€)" required>
-                                            <button class="home_search_button">search</button>
+                                            <input type="date" name="date_from" class="search_input search_input_2"
+                                                   placeholder="Departure" required="required">
+                                            <input type="date" name="date_to" class="search_input search_input_3"
+                                                   placeholder="Arrival" required="required">
+                                            <input type="number" class="search_input search_input_4"
+                                                   placeholder="Budžet max. (€)">
+                                            <button class="home_search_button">pretraga</button>
                                         </div>
                                     </form>
                                 </div>
@@ -259,8 +270,9 @@
                                         <div class="intro_item d-flex flex-row align-items-end justify-content-start">
                                             <div class="intro_icon"><img src="images/beach.svg" alt=""></div>
                                             <div class="intro_content">
-                                                <div class="intro_title">Top Destinations</div>
-                                                <div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
+                                                <div class="intro_title">Vrhunske destinacije</div>
+                                                <div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -270,8 +282,9 @@
                                         <div class="intro_item d-flex flex-row align-items-end justify-content-start">
                                             <div class="intro_icon"><img src="images/wallet.svg" alt=""></div>
                                             <div class="intro_content">
-                                                <div class="intro_title">The Best Prices</div>
-                                                <div class="intro_subtitle"><p>Sollicitudin mauris lobortis in.</p></div>
+                                                <div class="intro_title">Najbolje cijene</div>
+                                                <div class="intro_subtitle"><p>Sollicitudin mauris lobortis in.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -281,8 +294,9 @@
                                         <div class="intro_item d-flex flex-row align-items-end justify-content-start">
                                             <div class="intro_icon"><img src="images/suitcase.svg" alt=""></div>
                                             <div class="intro_content">
-                                                <div class="intro_title">Amazing Services</div>
-                                                <div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
+                                                <div class="intro_title">Odlična usluga</div>
+                                                <div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -300,86 +314,29 @@
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <div class="section_subtitle">simply amazing places</div>
-                            <div class="section_title"><h2>Popular Destinations</h2></div>
+                            <div class="section_subtitle">raj na zemlji</div>
+                            <div class="section_title"><h2>Popularne destinacije</h2></div>
                         </div>
                     </div>
                     <div class="row destinations_row">
                         <div class="col">
                             <div class="destinations_container item_grid">
+                            @foreach($popularDestinations as $destination)
 
                                 <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_1.jpg" alt="">
-                                        <div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+                                    <div class="destination item">
+                                        <div class="destination_image">
+                                            <img src="images/destination_1.jpg" alt="">
+                                        </div>
+                                        <div class="destination_content">
+                                            <div class="destination_title"><a href="destinations.blade.php">{{$destination->cityTo->name}}</a>
+                                            </div>
+                                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>
+                                            </div>
+                                            <div class="destination_price">Od {{$destination->price}}€</div>
+                                        </div>
                                     </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">BalIIIi</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
-
-                                <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_2.jpg" alt="">
-                                    </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">Indonesia</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
-
-                                <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_3.jpg" alt="">
-                                    </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">San Francisco</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
-
-                                <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_4.jpg" alt="">
-                                    </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">Paris</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
-
-                                <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_5.jpg" alt="">
-                                    </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">Phi Phi Island</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
-
-                                <!-- Destination -->
-                                <div class="destination item">
-                                    <div class="destination_image">
-                                        <img src="images/destination_6.jpg" alt="">
-                                    </div>
-                                    <div class="destination_content">
-                                        <div class="destination_title"><a href="destinations.blade.php">Mykonos</a></div>
-                                        <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-                                        <div class="destination_price">From $679</div>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
                         </div>
@@ -390,12 +347,13 @@
             <!-- Testimonials -->
 
             <div class="testimonials" id="testimonials">
-                <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
+                <div class="parallax_background parallax-window" data-parallax="scroll"
+                     data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <div class="section_subtitle">simply amazing places</div>
-                            <div class="section_title"><h2>Testimonials</h2></div>
+                            {{--                            <div class="section_subtitle">simply amazing places</div>--}}
+                            <div class="section_title"><h2>Iskustva zadovoljnih korisnika</h2></div>
                         </div>
                     </div>
                     <div class="row testimonials_row">
@@ -407,9 +365,13 @@
 
                                     <!-- Slide -->
                                     <div class="owl-item text-center">
-                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
+                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
+                                            vehicula odio.
+                                        </div>
                                         <div class="testimonial_author">
-                                            <div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+                                            <div
+                                                class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
                                                 <div>john turner,</div>
                                                 <div>client</div>
                                             </div>
@@ -418,9 +380,13 @@
 
                                     <!-- Slide -->
                                     <div class="owl-item text-center">
-                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
+                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
+                                            vehicula odio.
+                                        </div>
                                         <div class="testimonial_author">
-                                            <div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+                                            <div
+                                                class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
                                                 <div>john turner,</div>
                                                 <div>client</div>
                                             </div>
@@ -429,9 +395,13 @@
 
                                     <!-- Slide -->
                                     <div class="owl-item text-center">
-                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
+                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                            elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
+                                            vehicula odio.
+                                        </div>
                                         <div class="testimonial_author">
-                                            <div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
+                                            <div
+                                                class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
                                                 <div>john turner,</div>
                                                 <div>client</div>
                                             </div>
@@ -461,10 +431,12 @@
                             <div class="news_container">
 
                                 <!-- News Post -->
-                                <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                <div
+                                    class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
                                     <div class="news_post_image"><img src="images/news_1.jpg" alt=""></div>
                                     <div class="news_post_content">
-                                        <div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+                                        <div
+                                            class="news_post_date d-flex flex-row align-items-end justify-content-start">
                                             <div>02</div>
                                             <div>june</div>
                                         </div>
@@ -475,16 +447,19 @@
                                             </ul>
                                         </div>
                                         <div class="news_post_text">
-                                            <p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
+                                            <p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique
+                                                at leo. Vivamus massa.Tempor massa et laoreet.</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- News Post -->
-                                <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                <div
+                                    class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
                                     <div class="news_post_image"><img src="images/news_2.jpg" alt=""></div>
                                     <div class="news_post_content">
-                                        <div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+                                        <div
+                                            class="news_post_date d-flex flex-row align-items-end justify-content-start">
                                             <div>01</div>
                                             <div>june</div>
                                         </div>
@@ -495,16 +470,19 @@
                                             </ul>
                                         </div>
                                         <div class="news_post_text">
-                                            <p>Tempor massa et laoreet malesuada. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo.</p>
+                                            <p>Tempor massa et laoreet malesuada. Pellentesque sit amet elementum
+                                                ccumsan sit amet mattis eget, tristique at leo.</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- News Post -->
-                                <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                <div
+                                    class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
                                     <div class="news_post_image"><img src="images/news_3.jpg" alt=""></div>
                                     <div class="news_post_content">
-                                        <div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+                                        <div
+                                            class="news_post_date d-flex flex-row align-items-end justify-content-start">
                                             <div>29</div>
                                             <div>may</div>
                                         </div>
@@ -515,7 +493,8 @@
                                             </ul>
                                         </div>
                                         <div class="news_post_text">
-                                            <p>Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla nisl, accumsan sit amet mattis.</p>
+                                            <p>Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla nisl,
+                                                accumsan sit amet mattis.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -526,7 +505,8 @@
                         <!-- News Sidebar -->
                         <div class="col-xl-4">
                             <div class="travello">
-                                <div class="background_image" style="background-image:url(http://grupa17.test/images/travello.jpg)"></div>
+                                <div class="background_image"
+                                     style="background-image:url(http://grupa17.test/images/travello.jpg)"></div>
                                 <div class="travello_content">
                                     <div class="travello_content_inner">
                                         <div></div>
@@ -550,7 +530,8 @@
             <!-- Footer -->
 
             <footer class="footer">
-                <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/footer_1.jpg" data-speed="0.8"></div>
+                <div class="parallax_background parallax-window" data-parallax="scroll"
+                     data-image-src="images/footer_1.jpg" data-speed="0.8"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -569,7 +550,8 @@
 
                                 <!-- Footer Contact Item -->
                                 <div class="col-xl-4 footer_contact_col">
-                                    <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                    <div
+                                        class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
                                         <div class="footer_contact_icon"><img src="images/sign.svg" alt=""></div>
                                         <div class="footer_contact_title">Kontaktirajte nas</div>
                                         <div class="footer_contact_list">
@@ -583,7 +565,8 @@
 
                                 <!-- Footer Contact Item -->
                                 <div class="col-xl-4 footer_contact_col">
-                                    <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                    <div
+                                        class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
                                         <div class="footer_contact_icon"><img src="images/trekking.svg" alt=""></div>
                                         <div class="footer_contact_title">Posjetite nas</div>
                                         <div class="footer_contact_list">
@@ -596,7 +579,8 @@
 
                                 <!-- Footer Contact Item -->
                                 <div class="col-xl-4 footer_contact_col">
-                                    <div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+                                    <div
+                                        class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
                                         <div class="footer_contact_icon"><img src="images/around.svg" alt=""></div>
                                         <div class="footer_contact_title">Pošaljite nam poruku</div>
                                         <div class="footer_contact_list">
@@ -611,7 +595,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <div class="col text-center">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
             </footer>
         </div>

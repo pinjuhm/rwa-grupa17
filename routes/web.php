@@ -26,3 +26,4 @@ Route::resource('flights', 'FlightController');
 Route::resource('cities', 'CityController');
 Route::resource('airlines', 'AirlineController');
 Route::resource('planes', 'PlaneController');
+Route::resource('reservations', 'ReservationController');

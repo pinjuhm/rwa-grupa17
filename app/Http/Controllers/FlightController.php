@@ -43,7 +43,7 @@ class FlightController extends Controller
     {
         $this->validate(request(), [
             'city_id_from' => 'required|integer',
-            'city_id_to' => 'required|integer',
+            'city_id_to' => 'required|integer|different:city_id_from',
             'plane_id' => 'required|integer',
             'price' => 'required|integer',
             'datetime' => 'required',
@@ -139,6 +139,7 @@ class FlightController extends Controller
      */
     public function destroy(Flight $flight)
     {
-        //
+        $flight->delete();
+        return redirect('/flights');
     }
 }

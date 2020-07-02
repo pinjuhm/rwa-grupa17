@@ -176,23 +176,6 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="home_slider_content">
-                                                <div class="home_title"><h2>Dopustite da vas odvedemo</h2></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide -->
-                        <div class="owl-item">
-                            <div class="background_image"
-                                 style="background-image:url('{{ asset('images/home_slider.jpg') }}');"></div>
-                            <div class="home_slider_content_container">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="home_slider_content">
                                                 <div class="home_title"><h2>Let us take you away</h2></div>
                                             </div>
                                         </div>
@@ -227,14 +210,14 @@
                                             class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
                                             <select class="search_input search_input_1" id="city_id" name="city_id_from"
                                                     required>
-                                                <option value="" selected disabled>Od</option>
+                                                <option value="" selected disabled>Polazište</option>
                                                 @foreach($cities as $city)
                                                     <option value={{$city->id}}>{{$city->name}}</option>
                                                 @endforeach
                                             </select>
                                             <select class="search_input search_input_1" id="city_id" name="city_id_to"
                                                     required>
-                                                <option value="" selected disabled>Do</option>
+                                                <option value="" selected disabled>Odredište</option>
                                                 @foreach($cities as $city)
                                                     <option value={{$city->id}}>{{$city->name}}</option>
                                                 @endforeach
@@ -254,6 +237,41 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="row justify-content-center border-bottom border-dark">
+                    <h4 class="p-3 m-3">Polazište</h4>
+                    <h4 class="p-3 m-3">Odredište</h4>
+                    <h4 class="p-3 m-3">Aviokompanija</h4>
+                    <h4 class="p-3 m-3">Vrijeme</h4>
+                    <h4 class="p-3 m-3">Trajanje leta</h4>
+                    <h4 class="p-3 m-3">Cijena</h4>
+                    <h4 class="p-3 m-3">Kupi</h4>
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="row justify-content-center">
+                        <p class="p-3 m-3 mx-4">Mostar</p>
+                        <p class="p-3 m-3 mx-4">Široki Brijeg</p>
+                        <p class="p-3 m-3 mx-4">Vueling</p>
+                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>
+                        <p class="p-3 m-3 mx-4">120min</p>
+                        <p class="p-3 m-3 mx-4">120€</p>
+                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <p class="p-3 m-3 mx-4">Bali</p>
+                        <p class="p-3 m-3 mx-4">Fuji</p>
+                        <p class="p-3 m-3 mx-4">Booking</p>
+                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>
+                        <p class="p-3 m-3 mx-4">120min</p>
+                        <p class="p-3 m-3 mx-4">1200€</p>
+                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>
+                    </div>
+                </div>
+
+            </div>
+
 
             <!-- Intro -->
 
@@ -329,7 +347,8 @@
                                             <img src="images/destination_1.jpg" alt="">
                                         </div>
                                         <div class="destination_content">
-                                            <div class="destination_title"><a href="destinations.blade.php">{{$destination->cityTo->name}}</a>
+                                            <div class="destination_title"><a
+                                                    href="destinations.blade.php">{{$destination->cityTo->name}}</a>
                                             </div>
                                             <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>
                                             </div>
@@ -372,8 +391,7 @@
                                         <div class="testimonial_author">
                                             <div
                                                 class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-                                                <div>john turner,</div>
-                                                <div>client</div>
+                                                <div>Mario Marić</div>
                                             </div>
                                         </div>
                                     </div>
@@ -387,23 +405,7 @@
                                         <div class="testimonial_author">
                                             <div
                                                 class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-                                                <div>john turner,</div>
-                                                <div>client</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Slide -->
-                                    <div class="owl-item text-center">
-                                        <div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                            elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
-                                            vehicula odio.
-                                        </div>
-                                        <div class="testimonial_author">
-                                            <div
-                                                class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-                                                <div>john turner,</div>
-                                                <div>client</div>
+                                                <div>Jozo Jozić</div>
                                             </div>
                                         </div>
                                     </div>
@@ -412,13 +414,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="test_nav">
-                    <ul class="d-flex flex-column align-items-end justify-content-end">
-                        <li><a href="#">City Breaks Clients<span>01</span></a></li>
-                        <li><a href="#">Cruises Clients<span>02</span></a></li>
-                        <li><a href="#">All Inclusive Clients<span>03</span></a></li>
-                    </ul>
                 </div>
             </div>
 

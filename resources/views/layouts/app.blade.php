@@ -61,6 +61,9 @@
                         <a class="nav-link font-weight-bold" href="/flights">Letovi </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="/reservations">Rezervacije </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link font-weight-bold" href="/planes">Zrakoplovi </a>
                     </li>
                     <li class="nav-item">

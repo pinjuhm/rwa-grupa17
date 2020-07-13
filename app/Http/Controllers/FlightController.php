@@ -21,6 +21,19 @@ class FlightController extends Controller
         return view('flights.index', ['flights' => $flights]);
     }
 
+    public function search(Request $request)
+    {
+        $filteredFlights = Flight::where('city_id_from', $request['city_id_from'])
+            ->where('city_id_to', $request['city_id_to'])
+            ->whereBetween('datetime', [$request['date_from'], $request['date_to']])
+            ->where('price', '<', $request['budget'])
+            ->where('completed', false)
+            ->joinInfo()
+            ->get();
+
+        return $filteredFlights;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

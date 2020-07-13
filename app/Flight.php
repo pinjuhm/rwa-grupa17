@@ -33,6 +33,14 @@ class Flight extends Model
         return self::join('cities as city_from', 'flights.city_id_from', '=', 'city_from.id')
             ->join('cities as city_to', 'flights.city_id_to', '=', 'city_to.id')
             ->with('plane')
-            ->select(['city_from.name as city_from_name', 'city_to.name as city_to_name',  'flights.*']);
+            ->select(['city_from.name as city_from_name', 'city_to.name as city_to_name', 'flights.*']);
+    }
+
+    public function scopeJoinInfo($query)
+    {
+        return $query->join('cities as city_from', 'flights.city_id_from', '=', 'city_from.id')
+            ->join('cities as city_to', 'flights.city_id_to', '=', 'city_to.id')
+            ->with('plane')
+            ->select(['city_from.name as city_from_name', 'city_to.name as city_to_name', 'flights.*']);
     }
 }

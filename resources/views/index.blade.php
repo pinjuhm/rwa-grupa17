@@ -91,16 +91,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="header_social d-flex flex-row align-items-center justify-content-start">
-                    <ul class="d-flex flex-row align-items-start justify-content-start">
-                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
+                {{--                <div class="header_social d-flex flex-row align-items-center justify-content-start">--}}
+                {{--                    <ul class="d-flex flex-row align-items-start justify-content-start">--}}
+                {{--                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>--}}
+                {{--                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>--}}
+                {{--                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>--}}
+                {{--                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>--}}
+                {{--                        <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>--}}
+                {{--                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>--}}
+                {{--                    </ul>--}}
+                {{--                </div>--}}
             </header>
         </div>
 
@@ -205,28 +205,31 @@
                             <div class="home_search_container">
                                 <div class="home_search_title">Pronađite vaš let</div>
                                 <div class="home_search_content">
-                                    <form action="#" class="home_search_form" id="home_search_form">
+                                    <form class="home_search_form" id="search_flights" @submit.prevent="searchFlights">
                                         <div
                                             class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-                                            <select class="search_input search_input_1" id="city_id" name="city_id_from"
+                                            <select class="search_input search_input_1" v-model="city_id_from"
+                                                    name="city_id_from"
                                                     required>
                                                 <option value="" selected disabled>Polazište</option>
                                                 @foreach($cities as $city)
                                                     <option value={{$city->id}}>{{$city->name}}</option>
                                                 @endforeach
                                             </select>
-                                            <select class="search_input search_input_1" id="city_id" name="city_id_to"
+                                            <select class="search_input search_input_1" v-model="city_id_to"
+                                                    name="city_id_to"
                                                     required>
                                                 <option value="" selected disabled>Odredište</option>
                                                 @foreach($cities as $city)
                                                     <option value={{$city->id}}>{{$city->name}}</option>
                                                 @endforeach
                                             </select>
-                                            <input type="date" name="date_from" class="search_input search_input_2"
+                                            <input type="date" v-model="date_from" name="date_from"
+                                                   class="search_input search_input_2"
                                                    placeholder="Departure" required="required">
-                                            <input type="date" name="date_to" class="search_input search_input_3"
+                                            <input type="date" v-model="date_to" name="date_to" class="search_input search_input_3"
                                                    placeholder="Arrival" required="required">
-                                            <input type="number" class="search_input search_input_4"
+                                            <input type="number" v-model="budget" name="budget" class="search_input search_input_4"
                                                    placeholder="Budžet max. (€)">
                                             <button class="home_search_button">pretraga</button>
                                         </div>
@@ -238,40 +241,81 @@
                 </div>
             </div>
 
+            {{--            <div class="container">--}}
+            {{--                <div class="row justify-content-center border-bottom border-dark">--}}
+            {{--                    <h4 class="p-3 m-3">Polazište</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Odredište</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Aviokompanija</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Vrijeme</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Trajanje leta</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Cijena</h4>--}}
+            {{--                    <h4 class="p-3 m-3">Kupi</h4>--}}
+            {{--                </div>--}}
+            {{--                <div class="d-flex flex-column">--}}
+            {{--                    <div class="row justify-content-center">--}}
+            {{--                        <p class="p-3 m-3 mx-4">Mostar</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">Široki Brijeg</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">Vueling</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">120min</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">120€</p>--}}
+            {{--                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>--}}
+            {{--                    </div>--}}
+
+            {{--                    <div class="row justify-content-center">--}}
+            {{--                        <p class="p-3 m-3 mx-4">Bali</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">Fuji</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">Booking</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">120min</p>--}}
+            {{--                        <p class="p-3 m-3 mx-4">1200€</p>--}}
+            {{--                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>--}}
+            {{--                    </div>--}}
+            {{--                </div>--}}
+
+            {{--            </div>--}}
+
             <div class="container">
-                <div class="row justify-content-center border-bottom border-dark">
-                    <h4 class="p-3 m-3">Polazište</h4>
-                    <h4 class="p-3 m-3">Odredište</h4>
-                    <h4 class="p-3 m-3">Aviokompanija</h4>
-                    <h4 class="p-3 m-3">Vrijeme</h4>
-                    <h4 class="p-3 m-3">Trajanje leta</h4>
-                    <h4 class="p-3 m-3">Cijena</h4>
-                    <h4 class="p-3 m-3">Kupi</h4>
-                </div>
-                <div class="d-flex flex-column">
-                    <div class="row justify-content-center">
-                        <p class="p-3 m-3 mx-4">Mostar</p>
-                        <p class="p-3 m-3 mx-4">Široki Brijeg</p>
-                        <p class="p-3 m-3 mx-4">Vueling</p>
-                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>
-                        <p class="p-3 m-3 mx-4">120min</p>
-                        <p class="p-3 m-3 mx-4">120€</p>
-                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <p class="p-3 m-3 mx-4">Bali</p>
-                        <p class="p-3 m-3 mx-4">Fuji</p>
-                        <p class="p-3 m-3 mx-4">Booking</p>
-                        <p class="p-3 m-3 mx-4">2020-01-01 15:00</p>
-                        <p class="p-3 m-3 mx-4">120min</p>
-                        <p class="p-3 m-3 mx-4">1200€</p>
-                        <button type="button" class="btn btn-dark p-3 m-3 mx-4 align-self-end">Kupi</button>
-                    </div>
-                </div>
-
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Polazište</th>
+                        <th scope="col">Odredište</th>
+                        <th scope="col">Vrijeme</th>
+                        <th scope="col">Trajanje leta</th>
+                        <th scope="col">Cijena</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(flight,index) in filteredFlights">
+                        <td>@{{ index }}</td>
+                        <td>@{{flight.city_from_name}}</td>
+                        <td>@{{flight.city_to_name}}</td>
+                        <td>@{{flight.datetime}}</td>
+                        <td>@{{flight.duration}}</td>
+                        <td>@{{flight.price}}</td>
+                        <td></td>
+{{--                        <td>{{flight.city_to_name}}</td>--}}
+                        <td>
+{{--                            <button class="btn btn-danger" @click="deletePost(post)"><i style="color:white" class="fa fa-trash"></i></button>--}}
+                        </td>
+                    </tr>
+                    {{--                    @foreach($filteredFlights as $filteredFlight)--}}
+                    {{--                        <tr>--}}
+                    {{--                            <th scope="row">1</th>--}}
+                    {{--                            <td>Mark</td>--}}
+                    {{--                            <td>Otto</td>--}}
+                    {{--                            <td>@mdo</td>--}}
+                    {{--                            <td>@mdo</td>--}}
+                    {{--                            <td>@mdo</td>--}}
+                    {{--                            <td>@mdo</td>--}}
+                    {{--                        </tr>--}}
+                    {{--                    @endforeach--}}
+                    </tbody>
+                </table>
             </div>
-
 
             <!-- Intro -->
 
@@ -591,12 +635,15 @@
                     </div>
                 </div>
                 <div class="col text-center">
+
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
             </footer>
         </div>
     </main>
 </div>
+
+
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('css/styles/bootstrap4/popper.js') }}"></script>
 <script src="{{ asset('css/styles/bootstrap4/bootstrap.min.js') }}"></script>
@@ -606,5 +653,6 @@
 <script src="{{ asset('plugins/easing/easing.js') }}" defer></script>
 <script src="{{ asset('plugins/parallax-js-master/parallax.min.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
+
 </body>
 </html>

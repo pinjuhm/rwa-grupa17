@@ -49548,7 +49548,40 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: function data() {
+    return {
+      city_id_from: '',
+      city_id_to: '',
+      date_from: '',
+      date_to: '',
+      budget: '',
+      filteredFlights: []
+    };
+  },
+  methods: {
+    searchFlights: function searchFlights() {
+      var _this = this;
+
+      console.log(this.city_id_from);
+      axios({
+        method: 'post',
+        url: '/api/flights',
+        data: {
+          city_id_from: this.city_id_from,
+          city_id_to: this.city_id_to,
+          date_from: this.date_from,
+          date_to: this.date_to,
+          budget: this.budget
+        }
+      }).then(function (response) {
+        _this.filteredFlights = response.data;
+        console.log(response.data);
+      }, function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -49685,8 +49718,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\grupa17\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\grupa17\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\rwa-grupa17\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\rwa-grupa17\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

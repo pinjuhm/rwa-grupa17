@@ -29,4 +29,35 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            city_id_from: '',
+            city_id_to: '',
+            date_from: '',
+            date_to: '',
+            budget: '',
+            filteredFlights: []
+        }
+    },
+    methods: {
+        searchFlights: function () {
+            console.log(this.city_id_from)
+            axios({
+                method: 'post',
+                url: '/api/flights',
+                data: {
+                    city_id_from: this.city_id_from,
+                    city_id_to: this.city_id_to,
+                    date_from: this.date_from,
+                    date_to: this.date_to,
+                    budget: this.budget,
+                }
+            }).then((response) => {
+                this.filteredFlights = response.data
+                console.log(response.data);
+            }, (error) => {
+                console.log(error);
+            });
+        },
+    }
 });

@@ -44,9 +44,6 @@
                                     <nav class="main_nav">
                                         <ul class="d-flex flex-row align-items-start justify-content-start">
                                             <li class="active"><a href="indssex.blade.php">Početna</a></li>
-
-                                            <li><a href="about.html">About us</a></li>
-                                            <li><a href="#">Services</a></li>
                                             @guest
                                                 <li><a href="{{ route('login') }}">Prijava</a></li>
                                                 <li><a href="{{ route('register') }}">Registracija</a></li>
@@ -384,18 +381,18 @@
                         <div class="col">
                             <div class="destinations_container item_grid">
                             @foreach($popularDestinations as $destination)
-
                                 <!-- Destination -->
                                     <div class="destination item">
                                         <div class="destination_image">
-                                            <img src="images/destination_1.jpg" alt="">
+{{--                                            <img src="images/destination_1.jpg" alt="">--}}
+                                            <img src="http://rwa-grupa17.test/storage/{{$destination->cityTo->image_path}}" alt="">
                                         </div>
                                         <div class="destination_content">
                                             <div class="destination_title"><a
                                                     href="destinations.blade.php">{{$destination->cityTo->name}}</a>
                                             </div>
-                                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>
-                                            </div>
+{{--                                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>--}}
+{{--                                            </div>--}}
                                             <div class="destination_price">Od {{$destination->price}}€</div>
                                         </div>
                                     </div>

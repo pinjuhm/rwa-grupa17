@@ -37,13 +37,19 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image'
         ]);
 
-        City::create(request([
+        $city = City::make(request([
             'name'
         ]));
 
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $city->addImage($image);
+        }
+        $city->save();
         return redirect('/cities');
     }
 
@@ -79,13 +85,20 @@ class CityController extends Controller
     public function update(Request $request, City $city)
     {
         $this->validate(request(), [
-            'name' => 'required|string|max:255'
+            'name' => 'required|string|max:255',
+            'image' => 'nullable|image'
         ]);
 
         $city->update(request([
             'name'
         ]));
 
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $city->addImage($image);
+        }
+
+        $city->save();
         return redirect('/cities');
     }
 

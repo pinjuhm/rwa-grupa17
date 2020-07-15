@@ -41,7 +41,6 @@ const app = new Vue({
     },
     methods: {
         searchFlights: function () {
-            console.log(this.city_id_from)
             axios({
                 method: 'post',
                 url: '/api/flights',

@@ -58,20 +58,20 @@
                 @else
                     @admin
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/flights">Letovi </a>
+                        <a class="nav-link font-weight-bold" href="/admin">Admin panel </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/reservations">Rezervacije </a>
+                        <a class="nav-link font-weight-bold" href="/">Početna </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/planes">Zrakoplovi </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/airlines">Aviokompanije </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/cities">Gradovi </a>
-                    </li>
+                    {{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link font-weight-bold" href="/planes">Zrakoplovi </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link font-weight-bold" href="/airlines">Aviokompanije </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link font-weight-bold" href="/cities">Gradovi </a>--}}
+{{--                    </li>--}}
                     @endAdmin
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

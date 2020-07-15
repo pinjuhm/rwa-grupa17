@@ -27,3 +27,4 @@ Route::resource('cities', 'CityController');
 Route::resource('airlines', 'AirlineController');
 Route::resource('planes', 'PlaneController');
 Route::resource('reservations', 'ReservationController');
+Route::get('/users', 'UserController@index');

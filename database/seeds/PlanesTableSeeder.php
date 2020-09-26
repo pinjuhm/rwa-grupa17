@@ -20,7 +20,7 @@ class PlanesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Crni bombarder',
+                'name' => 'Airbus A380',
                 'capacity' => 1000,
                 'airline_id' => 2,
                 'created_at' => '2020-02-09 20:12:50',

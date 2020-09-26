@@ -40,10 +40,10 @@
                         <div class="col">
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-                                    <div class="logo"><a href="indssex.blade.php">Travello</a></div>
+                                    <div class="logo"><a href="/">Travello</a></div>
                                     <nav class="main_nav">
                                         <ul class="d-flex flex-row align-items-start justify-content-start">
-                                            <li class="active"><a href="indssex.blade.php">Početna</a></li>
+                                            <li class="active"><a href="/">Početna</a></li>
                                             @guest
                                                 <li><a href="{{ route('login') }}">Prijava</a></li>
                                                 <li><a href="{{ route('register') }}">Registracija</a></li>
@@ -109,7 +109,7 @@
 
             <div class="menu">
                 <div class="menu_header d-flex flex-row align-items-center justify-content-start">
-                    <div class="menu_logo"><a href="indssex.blade.php">Travello</a></div>
+                    <div class="menu_logo"><a href="/">Travello</a></div>
                     <div class="menu_close_container ml-auto">
                         <div class="menu_close">
                             <div></div>
@@ -388,8 +388,7 @@
                                             <img src="http://rwa-grupa17.test/storage/{{$destination->cityTo->image_path}}" alt="">
                                         </div>
                                         <div class="destination_content">
-                                            <div class="destination_title"><a
-                                                    href="destinations.blade.php">{{$destination->cityTo->name}}</a>
+                                            <div class="destination_title">{{$destination->cityTo->name}}
                                             </div>
 {{--                                            <div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p>--}}
 {{--                                            </div>--}}
